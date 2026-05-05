@@ -1,6 +1,6 @@
 {
 	"name": "fenics-env",
-	"image": "cr.yandex/crpdtgu6t719a7cssr10/fenics-env:v0.1",
+	"image": "ghcr.io/bc-ru/fenics-gmsh-env:2026-05-05",
 	"workspaceFolder": "/workspace",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
 	"forwardPorts": [

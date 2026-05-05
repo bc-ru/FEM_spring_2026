@@ -50,21 +50,9 @@
 ## Сборка и запуск "контейнера"
 
 ### 1. Запуск контейнера из уже готового образа
+Cкачать образ из реестра ghcr.io с помощью, например, CLI.
 
-Скачай контейнер:
-1. Для этого нужно авторизоваться в yandex cloud (там хранится образ)
-
-        curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-
-2. Перезапустите консоль\терминал
-
-3. Эта команда запишет твой токен в конфиг, после ввода нужно перейти по ссылке из консоли, выбрать свой аккаунт, появится токен, его нужно вставить в консоль.
-
-        yc init
-
-Теперь можно скачивать образ из облака с помощью, например, CLI.
-
-    docker pull cr.yandex/crpdtgu6t719a7cssr10/fenics-env:v0.1
+    docker pull ghcr.io/bc-ru/fenics-gmsh-env:2026-05-05
 
 #### Контейнер содержит в себе все необходимые библиотеки для работы с gmesh, fenics-legacy и streamlit
 
@@ -85,7 +73,7 @@ CTRL+SHIFT+P -> Dev containers: Reopen in containers
     docker run --rm -it \
       -v "$(pwd)":/workspace \
       -w /workspace \
-      cr.yandex/crpdtgu6t719a7cssr10/fenics-env:v0.1
+      ghcr.io/bc-ru/fenics-gmsh-env:2026-05-05
 
 #### Запуск консольным скриптом
  
@@ -114,7 +102,7 @@ CTRL+SHIFT+P -> Dev containers: Reopen in containers
 
 Для создания своего образа нужно создать свой Dockerfile и указать базовый образ:
 
-    FROM cr.yandex/crpdtgu6t719a7cssr10/fenics-env:v0.1
+    FROM ghcr.io/bc-ru/fenics-gmsh-env:2026-05-05
 
 Затем ниже указать уже необходимые изменения, например установку библиотеки python:
     
