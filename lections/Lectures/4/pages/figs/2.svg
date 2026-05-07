@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="512"
+   width="512"
+   version="1.1"
+   id="svg1384"
+   sodipodi:docname="2.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata1390">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1388" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     id="namedview1386"
+     showgrid="false"
+     inkscape:zoom="2.6074563"
+     inkscape:cx="260.02996"
+     inkscape:cy="425.73352"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1304" />
+  <style
+     type="text/css"
+     id="style1254"><![CDATA[
+			.site{fill:#000;}
+			.vertex{fill:#f00}
+			.edge{stroke:#000;stroke-width:2px;}
+			.ridge{stroke:#f00;stroke-width:2px;}
+			.dashed{stroke:#f00;stroke-width:2px;stroke-dasharray: 4 4;}
+		]]></style>
+  <g
+     class="vertex"
+     id="g1276">
+    <circle
+       cx="165.694"
+       cy="180.347"
+       r="5"
+       id="circle1256" />
+    <circle
+       cx="351.090"
+       cy="282.253"
+       r="5"
+       id="circle1258" />
+    <circle
+       cx="170.641"
+       cy="221.750"
+       r="5"
+       id="circle1260" />
+    <circle
+       cx="117.915"
+       cy="327.904"
+       r="5"
+       id="circle1262" />
+    <circle
+       cx="175.000"
+       cy="412.524"
+       r="5"
+       id="circle1264" />
+    <circle
+       cx="302.828"
+       cy="331.315"
+       r="5"
+       id="circle1266" />
+    <circle
+       cx="304.499"
+       cy="320.175"
+       r="5"
+       id="circle1268" />
+    <circle
+       cx="235.408"
+       cy="131.508"
+       r="5"
+       id="circle1270" />
+    <circle
+       cx="351.862"
+       cy="181.024"
+       r="5"
+       id="circle1272" />
+    <circle
+       cx="398.448"
+       cy="153.000"
+       r="5"
+       id="circle1274" />
+  </g>
+  <g
+     class="ridge"
+     id="g1304">
+    <line
+       x1="170"
+       y1="221.750"
+       x2="304.499"
+       y2="320.175"
+       id="line1278" />
+    <line
+       x1="170"
+       y1="221.750"
+       x2="117.915"
+       y2="327.904"
+       id="line1280" />
+    <line
+       x1="117"
+       y1="327.904"
+       x2="175.000"
+       y2="412.524"
+       id="line1282" />
+    <line
+       x1="175"
+       y1="412.524"
+       x2="302.828"
+       y2="331.315"
+       id="line1284" />
+    <line
+       x1="302"
+       y1="331.315"
+       x2="304.499"
+       y2="320.175"
+       id="line1286" />
+    <line
+       x1="165"
+       y1="180.347"
+       x2="170.641"
+       y2="221.750"
+       id="line1288" />
+    <line
+       x1="351"
+       y1="282.253"
+       x2="304.499"
+       y2="320.175"
+       id="line1290" />
+    <line
+       x1="235"
+       y1="131.508"
+       x2="351.862"
+       y2="181.024"
+       id="line1292" />
+    <line
+       x1="235"
+       y1="131.508"
+       x2="309.517"
+       y2="-132.320"
+       id="line1294"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:4,2;stroke-dashoffset:0" />
+    <line
+       x1="309"
+       y1="-132.320"
+       x2="398.448"
+       y2="153.000"
+       id="line1296"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:4,2;stroke-dashoffset:0" />
+    <line
+       x1="351"
+       y1="181.024"
+       x2="398.448"
+       y2="153.000"
+       id="line1298" />
+    <line
+       x1="165"
+       y1="180.347"
+       x2="235.408"
+       y2="131.508"
+       id="line1300" />
+    <line
+       x1="351"
+       y1="282.253"
+       x2="351.862"
+       y2="181.024"
+       id="line1302" />
+  </g>
+  <g
+     class="dashed"
+     id="g1318">
+    <line
+       x1="165.694"
+       y1="180.347"
+       x2="0.000"
+       y2="97.500"
+       id="line1306" />
+    <line
+       x1="117.915"
+       y1="327.904"
+       x2="0.000"
+       y2="346.328"
+       id="line1308" />
+    <line
+       x1="175.000"
+       y1="412.524"
+       x2="175.000"
+       y2="512.000"
+       id="line1310" />
+    <line
+       x1="302.828"
+       y1="331.315"
+       x2="386.000"
+       y2="512.000"
+       id="line1312" />
+    <line
+       x1="351.090"
+       y1="282.253"
+       x2="512.000"
+       y2="314.938"
+       id="line1314" />
+    <line
+       x1="398.448"
+       y1="153.000"
+       x2="512.000"
+       y2="153.000"
+       id="line1316" />
+  </g>
+  <g
+     class="site"
+     id="g1340">
+    <circle
+       cx="85"
+       cy="415"
+       r="5"
+       id="circle1320" />
+    <circle
+       cx="391"
+       cy="357"
+       r="5"
+       id="circle1322" />
+    <circle
+       cx="265"
+       cy="415"
+       r="5"
+       id="circle1324" />
+    <circle
+       cx="417"
+       cy="229"
+       r="5"
+       id="circle1326" />
+    <circle
+       cx="417"
+       cy="77"
+       r="5"
+       id="circle1328" />
+    <circle
+       cx="286"
+       cy="228"
+       r="5"
+       id="circle1330" />
+    <circle
+       cx="211"
+       cy="330"
+       r="5"
+       id="circle1332" />
+    <circle
+       cx="60"
+       cy="255"
+       r="5"
+       id="circle1334" />
+    <circle
+       cx="162"
+       cy="51"
+       r="5"
+       id="circle1336" />
+    <circle
+       cx="340"
+       cy="101"
+       r="5"
+       id="circle1338" />
+  </g>
+  <g
+     class="edge"
+     id="g1382">
+    <line
+       x1="85"
+       y1="415"
+       x2="265"
+       y2="415"
+       id="line1342" />
+    <line
+       x1="85"
+       y1="415"
+       x2="211"
+       y2="330"
+       id="line1344" />
+    <line
+       x1="85"
+       y1="415"
+       x2="60"
+       y2="255"
+       id="line1346" />
+    <line
+       x1="391"
+       y1="357"
+       x2="265"
+       y2="415"
+       id="line1348" />
+    <line
+       x1="391"
+       y1="357"
+       x2="417"
+       y2="229"
+       id="line1350" />
+    <line
+       x1="391"
+       y1="357"
+       x2="286"
+       y2="228"
+       id="line1352" />
+    <line
+       x1="391"
+       y1="357"
+       x2="211"
+       y2="330"
+       id="line1354" />
+    <line
+       x1="265"
+       y1="415"
+       x2="211"
+       y2="330"
+       id="line1356" />
+    <line
+       x1="417"
+       y1="229"
+       x2="417"
+       y2="77"
+       id="line1358" />
+    <line
+       x1="417"
+       y1="229"
+       x2="286"
+       y2="228"
+       id="line1360" />
+    <line
+       x1="417"
+       y1="229"
+       x2="340"
+       y2="101"
+       id="line1362" />
+    <line
+       x1="417"
+       y1="77"
+       x2="340"
+       y2="101"
+       id="line1366" />
+    <line
+       x1="286"
+       y1="228"
+       x2="211"
+       y2="330"
+       id="line1368" />
+    <line
+       x1="286"
+       y1="228"
+       x2="60"
+       y2="255"
+       id="line1370" />
+    <line
+       x1="286"
+       y1="228"
+       x2="162"
+       y2="51"
+       id="line1372" />
+    <line
+       x1="286"
+       y1="228"
+       x2="340"
+       y2="101"
+       id="line1374" />
+    <line
+       x1="211"
+       y1="330"
+       x2="60"
+       y2="255"
+       id="line1376" />
+    <line
+       x1="60"
+       y1="255"
+       x2="162"
+       y2="51"
+       id="line1378" />
+    <line
+       x1="162"
+       y1="51"
+       x2="340"
+       y2="101"
+       id="line1380" />
+  </g>
+</svg>

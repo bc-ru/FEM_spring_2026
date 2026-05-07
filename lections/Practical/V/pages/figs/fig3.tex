@@ -1,0 +1,40 @@
+\documentclass[preview]{standalone}
+\usepackage{tkz-graph}
+\begin{document}
+
+\begin{figure}[ht]
+\center
+ \begin{tikzpicture}
+
+    % Закрашенный прямоугольник на фоне
+    \fill[blue!15]  (0,0) rectangle (6,6);
+    \draw[black]  (2,2) rectangle (4,4);
+
+    % Рисуем 9 эллипсов, повернутых на 45 градусов
+    \foreach \x in {1,2,3} {
+        \foreach \y in {1,2,3} {
+            \begin{scope}[shift={(\x*2-1, \y*2-1)}, rotate=45]
+		  \fill [green!15] (0,0) ellipse (0.5 and 0.25);
+                \draw[thick] (0,0) ellipse (0.5 and 0.25);
+            \end{scope}
+        }
+    }
+
+ \end{tikzpicture}
+\end{figure}
+
+
+\end{document}
+
+После: convert pdf to png
+https://convertio.co/pdf-png/
+
+
+
+ 
+
+
+
+
+
+

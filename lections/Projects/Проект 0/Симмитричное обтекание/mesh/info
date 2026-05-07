@@ -1,0 +1,12 @@
+Подготовка сетки
+
+1. Открываем файл geo в gmsh
+2. Генерируем сетку
+3. Экспорт сетки с MSH Options: Format - Version 2 ASCII 
+
+Конвертирование сетки в xml формат FEniCS
+
+dolfin-convert 1.msh 1.xml
+
+
+

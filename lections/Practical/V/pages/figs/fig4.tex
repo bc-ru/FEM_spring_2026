@@ -1,0 +1,52 @@
+\documentclass[preview]{standalone}
+\usepackage{tkz-graph}
+\begin{document}
+
+\begin{figure}[ht]
+\center
+ \begin{tikzpicture}
+
+   \draw[->] (0,0) -- (6,0);
+   \draw[->] (0,0) -- (0,6);
+   \draw(-0.2,-0.2) node {$0$};   
+   \draw(5.5,-0.2) node {$x_1$};   
+   \draw(-0.2,5.5) node {$x_2$};      
+   \fill [blue!15] (0,0) rectangle (5,5);  
+   \draw[color=blue,line width=1pt]   (0,0) rectangle (5,5);
+   \draw(5,-0.3) node {$L$};  
+   \draw(-0.3,5) node {$H$};  
+   \begin{scope}[shift={(2.5, 2.5)}, rotate=45]
+   	\fill [green!15] (0,0) ellipse (1.25 and 0.625);
+   	\draw[thick] (0,0) ellipse (1.25 and 0.625);
+   \end{scope}
+
+   \draw(2.,2.) node {$D$};
+   \draw(3.,1.75) node {$\gamma$};
+   \draw(5.3,2.5) node {$\Gamma$};
+   \draw(2.5,-0.2) node {$l$};  
+   \draw[-] (0,2.5) -- (2.5,2.5) -- (2.5,0); 
+   \draw(-0.2,2.5) node {$h$};
+   \draw[<->] (2.5,2.5) -- (2.5-0.4419375,2.5+0.4419375);
+   \draw[<->] (2.5,2.5) -- (2.5+0.883875,2.5+0.883875);
+   \draw(2.47,2.8) node {$r$};
+   \draw(3.1,2.7) node {$R$};
+
+
+ \end{tikzpicture}
+\end{figure}
+
+
+\end{document}
+
+После: convert pdf to png
+https://convertio.co/pdf-png/
+
+
+
+ 
+
+
+
+
+
+

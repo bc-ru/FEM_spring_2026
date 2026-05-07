@@ -1,0 +1,137 @@
+\documentclass[preview]{standalone}
+\usepackage{tkz-graph}
+\begin{document}
+
+\begin{figure}[ht]
+\center
+ \begin{tikzpicture}[scale=0.5]
+
+   \draw[color=blue,line width=1pt] (0,2) -- (4,4);
+   \draw[color=blue,line width=1pt] (4,4) -- (8,0);
+   \draw[color=blue,line width=1pt] (8,0) -- (0,2);
+   \fill [blue] (0,2) circle (0.075);
+   \fill [blue] (4,4) circle (0.075);
+   \fill [blue] (8,0) circle (0.075);
+   \draw(0,1.6) node {$1$}; 
+   \draw(4,4.4) node {$2$}; 
+   \draw(8,-0.4) node {$3$}; 
+
+
+   \draw[color=black,line width=1pt] (10,1) -- (11,5);
+   \draw[color=black,line width=1pt] (11,5) -- (16,4);
+   \draw[color=black,line width=1pt] (16,4) -- (18,0);
+   \draw[color=black,line width=1pt] (18,0) -- (10,1);
+
+   \fill [black] (10,1) circle (0.075);
+   \fill [black] (11,5) circle (0.075);
+   \fill [black] (16,4) circle (0.075);
+   \fill [black] (18,0) circle (0.075);
+   \draw(10,0.6) node {$1$}; 
+   \draw(11,5.4) node {$2$}; 
+   \draw(16.4,4) node {$3$}; 
+   \draw(18,-0.4) node {$4$}; 
+ \end{tikzpicture}
+\end{figure}
+
+% \begin{figure}[ht]
+% \center
+%  \begin{tikzpicture}[scale=0.4]
+% 
+%    \draw[color=blue,line width=1pt] (0,2) -- (3,8);
+%    \draw[color=blue,line width=1pt] (3,8) -- (8,0);
+%    \draw[color=blue,line width=1pt] (8,0) -- (0,2);
+%    \draw[color=blue,line width=1pt] (3,8) -- (2,-3);
+%    \draw[color=blue,line width=1pt] (0,2) -- (2,-3);
+%    \draw[color=blue,line width=1pt] (8,0) -- (2,-3);
+%    \fill [blue] (0,2) circle (0.075);
+%    \fill [blue] (3,8) circle (0.075);
+%    \fill [blue] (8,0) circle (0.075);
+%    \fill [blue] (2,-3) circle (0.075);
+% 
+%    \draw(-0.2,1.6) node {$1$}; 
+%    \draw(2,-3.5) node {$2$}; 
+%    \draw(8,-0.5) node {$3$}; 
+%    \draw(3,8.4) node {$4$}; 
+% 
+% %   
+% 
+%    \fill [black] (10,1) circle (0.075);
+%    \draw(9.8,0.6) node {$1$}; 
+%    \draw(16.4,2) node {$2$}; 
+%    \fill [black] (16,2) circle (0.075);
+%    \draw(12,-2.5) node {$3$}; 
+%    \fill [black] (12,-2) circle (0.075);
+%    \draw[color=black,line width=1pt] (10,1) -- (16,2);
+%    \draw[color=black,line width=1pt] (12,-2) -- (16,2);
+%    \draw[color=black,line width=1pt] (12,-2) -- (10,1);
+% 
+%    \fill [black] (10,6) circle (0.075);
+%    \draw(9.8,6.4) node {$4$}; 
+%    \draw(16.4,7) node {$5$}; 
+%    \fill [black] (16,7) circle (0.075);
+%    \draw(12,3.6) node {$6$}; 
+%    \fill [black] (12,3) circle (0.075);
+%    \draw[color=black,line width=1pt] (10,6) -- (16,7);
+%    \draw[color=black,line width=1pt] (12,3) -- (16,7);
+%    \draw[color=black,line width=1pt] (12,3) -- (10,6);
+% 
+%    \draw[color=black,line width=1pt] (10,6) -- (10,1);
+%    \draw[color=black,line width=1pt] (16,2) -- (16,7);
+%    \draw[color=black,line width=1pt] (12,3) -- (12,-2);
+% 
+% % 
+%    \fill [black] (20,1) circle (0.075);
+%    \draw(19.8,0.6) node {$1$}; 
+%    \draw(26.4,2.2) node {$2$}; 
+%    \fill [black] (26,2) circle (0.075);
+%    \draw(22,-2.5) node {$4$}; 
+%    \fill [black] (22,-2) circle (0.075);
+%    \draw(28,-1.5) node {$3$}; 
+%    \fill [black] (28,-1) circle (0.075);
+% 
+%    \fill [black] (20,6) circle (0.075);
+%    \draw(19.7,6.2) node {$5$}; 
+%    \draw(26.4,7) node {$6$}; 
+%    \fill [black] (26,7) circle (0.075);
+%    \draw(22.2,3.5) node {$8$}; 
+%    \fill [black] (22,3) circle (0.075);
+%    \draw(28.4,4) node {$7$}; 
+%    \fill [black] (28,4) circle (0.075);
+% 
+%    \draw[color=black,line width=1pt] (20,1) -- (26,2);
+%    \draw[color=black,line width=1pt] (28,-1) -- (26,2);
+%    \draw[color=black,line width=1pt] (22,-2) -- (20,1);
+%    \draw[color=black,line width=1pt] (28,-1) -- (22,-2);
+% 
+%    \draw[color=black,line width=1pt] (20,6) -- (26,7);
+%    \draw[color=black,line width=1pt] (28,4) -- (26,7);
+%    \draw[color=black,line width=1pt] (22,3) -- (20,6);
+%    \draw[color=black,line width=1pt] (28,4) -- (22,3);
+% 
+%    \draw[color=black,line width=1pt] (20,6) -- (20,1);
+%    \draw[color=black,line width=1pt] (26,2) -- (26,7);
+%    \draw[color=black,line width=1pt] (22,3) -- (22,-2);
+%    \draw[color=black,line width=1pt] (28,4) -- (28,-1);
+
+
+ \end{tikzpicture}
+\end{figure}
+
+
+
+\end{document}
+
+
+
+После: convert pdf to png
+https://convertio.co/pdf-png/
+
+
+
+ 
+
+
+
+
+
+

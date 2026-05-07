@@ -1,0 +1,246 @@
+{
+  "success": true,
+  "title": [
+    {
+      "name": "Вабищевич П.Н. Метод конечных элементов. Филиал МГУ имени М.В.Ломоносова, г. Саров. 2024 г."
+    }
+  ],
+  "environment": [
+    {
+      "dirbin": "/home/vab/Programm/Python/Streamlit/venv/bin", 
+      "direnv": "/home/vab/Documents/Саров/FEM-2026/NM"  
+    }
+  ],
+  "mainDoc": [
+    {
+      "name": " Лекции - общая информация",
+      "description": "Курс - Метод конечных элементов",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/Лекции_-_общая_информация.py"
+    },
+    {
+      "name": " 1 Вычислительные технологии",
+      "description": "Метод конечных элементов. Лекция 1",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/1/1_Вычислительные_технологии.py"
+    },
+    {
+      "name": " 2 Конечно-элементный анализ",
+      "description": "Метод конечных элементов. Лекция 2",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/2/2_Конечно-элементный_анализ.py"
+    },
+    {
+      "name": " 3 Геометрические модели",
+      "description": "Метод конечных элементов. Лекция 3",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/3/3_Геометрические_модели.py"
+    },
+    {
+      "name": " 4 Расчетные сетки",
+      "description": "Метод конечных элементов. Лекция 4",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/4/4_Расчетные_сетки.py"
+    },
+    {
+      "name": " 5 Полиномиальная интерполяция и аппроксимация",
+      "description": "Полиномиальная интерполяция и аппроксимация. Лекция 5",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/5/5_Полиномиальная_интерполяция_и_аппроксимация.py"
+    },    
+    {
+      "name": " 6 Конечно элементная аппроксимация",
+      "description": "Конечно-элементная аппроксимация. Лекция 6",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/6/6_Конечно-элементная_аппроксимация.py"
+    }, 
+    {
+      "name": " 7 Лагранжевые конечные элементы",
+      "description": "Лагранжевые конечные элементы. Лекция 7",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/7/7_Лагранжевые_конечные_элементы.py"
+    },     
+    {
+      "name": " 8 Библиотека конечных элементов",
+      "description": "Библиотека конечных элементов. Лекция 8",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/8/8_Библиотека_конечных_элементов.py"
+    },  
+    
+    {
+      "name": " 9 Одномерная задача Дирихле",
+      "description": "Одномерная задача Дирихле. Лекция 9",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/9/9_Одномерная_задача_Дирихле.py"
+    }, 
+    {
+      "name": "10 Другие одномерные задачи",
+      "description": "Другие одномерные задачи. Лекция 10",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/10/10_Другие_одномерные_задачи.py"
+    }, 
+    {
+      "name": "11 Двумерные задачи",
+      "description": "Двумерные задачи. Лекция 11",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/11/11_Двумерные_задачи.py"
+    }, 
+    {
+      "name": "12 Прямые методы решения дискретных задач",
+      "description": "Прямые методы решения дискретных задач. Лекция 12",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/12/12_Прямые_методы_решения_дискретных_задач.py"
+    }, 
+    {
+      "name": "13 Итерационные методы решения дискретных задач",
+      "description": "Итерационные методы решения дискретных задач. Лекция 13",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/13/13_Итерационные_методы_решения_дискретных_задач.py"
+    },     
+    {
+      "name": "14 Нелинейные задачи",
+      "description": "Нелинейные задачи. Лекция 14",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/14/14_Нелинейные_задачи.py"
+    },      
+    {
+      "name": "15 Спектральные задачи",
+      "description": "Спектральные задачи. Лекция 15",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/15/15_Спектральные_задачи.py"
+    },       
+    {
+      "name": "16 Векторные задачи и системы уравнений",
+      "description": "Векторные задачи и системы уравнений. Лекция 16",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/16/16_Векторные_задачи_и_системы_уравнений.py"
+    },  
+    {
+      "name": "17 Численные методы решения нестационарных задач",
+      "description": "Численные методы решения нестационарных задач. Лекция 17",
+       "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/17/17_Численные_методы_решения_нестационарных_задач.py"
+    },          
+    {
+      "name": "18 Метод конечных элементов для нестационарных задач",
+      "description": "Метод конечных элементов для нестационарных задач. Лекция 18",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Lectures/18/18_Метод_конечных_элементов_для_нестационарных_задач.py"
+    },                                  
+    {
+      "name": " Практикум - общая информация",
+      "description": "Курс -  Метод конечных элементов",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Practical/+_Практикум_-_общая_информация.py"   
+    },
+    {
+      "name": " I Практические занятия",
+      "description": "Метод конечных элементов. Семинар 1",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Practical/I/I_Практические_занятия.py"    
+    },
+    {
+      "name": " II Задания по обучающему треку",
+      "description": "Метод конечных элементов. Семинар 2",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Practical/II/II_Задания_по_обучающему_треку.py"      
+    }, 
+    {
+      "name": " III Прикладные математические модели",
+      "description": "Математические модели по курсу метода конечных элементов",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Practical/III/III_Прикладные_математические_модели.py"
+    },       
+    {
+      "name": " IV Пример проекта",
+      "description": "Пример проекта по курсу метода конечных элементов",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Practical/IV/IV_Пример_проекта.py"
+    }, 
+    {
+      "name": " V Проекты",
+      "description": "Проекты по курсу метода конечных элементов",
+      "url": "/home/vab/Documents/Саров/FEM-2026/Practical/V/V_Проекты.py"
+    },     
+    {
+      "name": " * Введение в теорию метода конечных элементов",
+      "description": " Р.З. Даутов, М.М. Карчевский. Введение в теорию метода конечных элементов. Казань, Казанский федеральный университет, 2011",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/ВведениеДаутов.pdf"
+    },    
+    {
+      "name": " * The Finite Element Method",
+      "description": "Mats G. Larson, Fredrik Bengzon. The Finite Element Method: Theory, Implementation, and Applications. Springer, 2013",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/FEMLarson.pdf"
+    },
+    {
+      "name": " * Solving PDEs in Python",
+      "description": "Hans Petter Langtangen, Anders Logg. Solving PDEs in Python: The FEniCS Tutorial I. Springer, 2016",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/SolvingLangtangen.pdf"
+    }
+  ],
+  "addDoc": [
+    {
+      "name": " NumPy",
+      "description": "Web документация по библиотеке NumPy",
+      "url": "https://numpy.org/doc/stable/"
+    },
+    {
+      "name": " SciPy",
+      "description": "Web документация по библиотеке SciPy",
+      "url": "https://docs.scipy.org/doc/scipy/"
+    },
+    {
+      "name": " Matplotlib",
+      "description": "Web документация по библиотеке Matplotlib",
+      "url": "https://matplotlib.org/stable/"
+    },
+    {
+      "name": " Streamlit",
+      "description": "Web документация по библиотеке Streamlit",
+      "url": "https://docs.streamlit.io/"
+    },
+    {
+      "name": " FEniCS",
+      "description": "Web документация по вычислительной платформе FEniCS",
+      "url": "https://fenicsproject.org/olddocs/dolfin/2019.1.0/python/"
+    },      
+    {
+      "name": " Gmsh",
+      "description": "Web документация по генератору сеток Gmsh",
+      "url": "https://gmsh.info/#Documentation/"
+    },    
+    {
+      "name": " Paraview",
+      "description": "Web документация по Paraview",
+      "url": "https://docs.paraview.org/en/latest/"
+    },   
+    {
+      "name": " LaTeX",
+      "description": "Документация по издательской системе LaTeX",
+      "url": "https://www.overleaf.com/learn"
+    },       
+    {
+      "name": " Library Genesis+",
+      "description": "Библиотека книг и статей Library Genesis+",
+      "url": "https://libgen.li/"
+    },   
+    {
+      "name": " * Лекции по методу конечных элементов - Андреев",
+      "description": "В.Б. Андреев. Лекции по методу конечных элементов. М., МАКС Пресс, 2010",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/ЛекцииАндреев.pdf"
+    },
+    {
+      "name": " * Вычислительные технологии. Базовый уровень",
+      "description": " Вычислительные технологии. Базовый уровень. Под ред. П.Н. Вабищевича. М., ЛЕНАНД, 2016",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/ВычислительныеTехнологии1.pdf"
+    },
+    {
+      "name": " * Вычислительные технологии. Профессиональный уровень",
+      "description": " Вычислительные технологии. Профессиональный уровень. Под ред. П.Н. Вабищевича. М., ЛЕНАНД, 2016",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/ВычислительныеTехнологии2.pdf"
+    },
+    {
+      "name": " * Mesh generation application to finite elements",
+      "description": "Pascal Jean Frey, Paul-Louis George. Mesh generation application to finite elements. ISTE Ltd and John Wiley, 2008",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/MeshGeneration.djvu"
+    },
+    {
+      "name": " * Numerical Python - Johansson",
+      "description": "Robert Johansson. Numerical Python: Scientific Computing and Data Science Applications with Numpy, SciPy and Matplotlib. Apress, 2019",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/NumericalJohansson.pdf"
+    },   
+    {
+      "name": " * Introduction to Numerical Methods - Langtangen, Mardal",
+      "description": "Hans Petter Langtangen, Kent-Andre Mardal. Introduction to Numerical Methods for Variational Problems. Springer, 2019",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/IntroductionLangtangen.pdf"
+    },
+    {
+      "name": " * Understanding And Implementing the Finite Element Method - Gockenbach",
+      "description": "Mark S. Gockenbach. Understanding and Implementing the Finite Element Method. SIAM, 2006",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/UnderstandingGockenbach.pdf"
+    },
+    {
+      "name": " * Beginner’s Guide to Streamlit with Python - Raghavendra",
+      "description": "Sujay Raghavendra. Beginner’s Guide to Streamlit with Python: Build Web-Based Data and Machine Learning Applications. Apress, 2023",
+      "url": "evince --fullscreen file:///home/vab/Documents/Саров/FEM-2026/Books/BeginnersRaghavendra.pdf"
+    }  
+
+  ]
+}
+
