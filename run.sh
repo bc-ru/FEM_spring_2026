@@ -5,4 +5,4 @@ docker run --rm -it \
   -p 127.0.0.1:8501:8501 \
   -v "$(pwd)":/workspace \
   -w /workspace \
-  ghcr.io/bc-ru/fenics-gmsh-env:2026-05-06
+  ghcr.io/bc-ru/fenics-gmsh-env:stable

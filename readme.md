@@ -90,7 +90,7 @@ docker run hello-world
 Готовый образ находится в GitHub Container Registry:
 
 ```bash
-docker pull ghcr.io/bc-ru/fenics-gmsh-env:2026-05-06
+docker pull ghcr.io/bc-ru/fenics-gmsh-env:stable
 ```
 
 Образ содержит основное окружение для работы с:
@@ -149,9 +149,10 @@ Dev Containers: Reopen in Container
 
 ```bash
 docker run --rm -it \
+  -p 127.0.0.1:8501:8501 \
   -v "$(pwd)":/workspace \
   -w /workspace \
-  ghcr.io/bc-ru/fenics-gmsh-env:2026-05-06
+  ghcr.io/bc-ru/fenics-gmsh-env:stable
 ```
 
 Что делает эта команда:
@@ -160,7 +161,7 @@ docker run --rm -it \
 - `-it` — запускает контейнер в интерактивном режиме;
 - `-v "$(pwd)":/workspace` — монтирует текущую директорию проекта внутрь контейнера;
 - `-w /workspace` — задаёт рабочую директорию внутри контейнера;
-- `ghcr.io/bc-ru/fenics-gmsh-env:2026-05-06` — образ, из которого запускается контейнер.
+- `ghcr.io/bc-ru/fenics-gmsh-env:stable` — образ, из которого запускается контейнер.
 
 После запуска вы попадёте в консоль контейнера.  
 Python-скрипты можно запускать обычным образом, например:
@@ -318,7 +319,7 @@ python3 solver/run_case.py
 Создайте файл `Dockerfile` и укажите базовый образ:
 
 ```dockerfile
-FROM ghcr.io/bc-ru/fenics-gmsh-env:2026-05-06
+FROM ghcr.io/bc-ru/fenics-gmsh-env:stable
 ```
 
 Ниже можно добавить свои изменения. Например, установить дополнительную Python-библиотеку:
@@ -370,7 +371,7 @@ docker run --rm -it \
   -p 127.0.0.1:8501:8501 \
   -v "$(pwd)":/workspace \
   -w /workspace \
-  ghcr.io/bc-ru/fenics-gmsh-env:2026-05-06
+  ghcr.io/bc-ru/fenics-gmsh-env:stable
 ```
 
 После входа в контейнер:
