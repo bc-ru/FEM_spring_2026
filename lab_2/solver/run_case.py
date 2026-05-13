@@ -5,8 +5,8 @@ from pathlib import Path
 
 from fenics import File
 
-from solve_streamfunction import solve_problem
-from postprocess import generate_all_outputs
+from lab_2.solver.solve_streamfunction import solve_problem
+from lab_2.solver.postprocess import generate_all_outputs
 
 
 def main():

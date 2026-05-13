@@ -48,6 +48,7 @@ def _facet_length_2d(facet) -> float:
     p1 = coords[verts[1]]
     return float(np.linalg.norm(p1 - p0))
 
+
 def _save_mesh_plot(mesh, outpath: Path):
     coords, cells, tri = _make_triangulation(mesh)
 
@@ -151,18 +152,16 @@ def extract_tangential_velocity_on_sphere(
         u_tau_h = tau_z * uz + tau_r * ur
         u_tau_exact = 3.0 * u_inf / (2.0 * (1.0 - a**3 / R**3)) * np.sin(theta)
 
-        rows.append(
-            {
-                "z": z,
-                "r": r,
-                "rho": rho,
-                "theta": theta,
-                "facet_length": _facet_length_2d(facet),
-                "u_tau_h": u_tau_h,
-                "u_tau_exact": u_tau_exact,
-                "abs_error": abs(u_tau_h - u_tau_exact),
-            }
-        )
+        rows.append({
+            "z": z,
+            "r": r,
+            "rho": rho,
+            "theta": theta,
+            "facet_length": _facet_length_2d(facet),
+            "u_tau_h": u_tau_h,
+            "u_tau_exact": u_tau_exact,
+            "abs_error": abs(u_tau_h - u_tau_exact),
+        })
 
     df = pd.DataFrame(rows).sort_values("theta").reset_index(drop=True)
 
@@ -175,7 +174,14 @@ def extract_tangential_velocity_on_sphere(
 def save_tangential_velocity_plot(df: pd.DataFrame, outpath: Path):
     fig, ax = plt.subplots(figsize=(7.5, 4.5))
     ax.plot(df["theta"], df["u_tau_exact"], linewidth=2.2, label="Точное решение")
-    ax.plot(df["theta"], df["u_tau_h"], "o-", markersize=3.5, linewidth=1.2, label="Численное решение")
+    ax.plot(
+        df["theta"],
+        df["u_tau_h"],
+        "o-",
+        markersize=3.5,
+        linewidth=1.2,
+        label="Численное решение",
+    )
     ax.set_xlabel(r"$\theta$")
     ax.set_ylabel(r"$u_\tau(\theta)$")
     ax.set_title("Касательная скорость на поверхности шара")
@@ -236,8 +242,15 @@ def generate_all_outputs(
     outdir.mkdir(parents=True, exist_ok=True)
 
     _save_mesh_plot(mesh, outdir / "mesh.png")
-    _save_scalar_field_plot(mesh, psi_h, r"Численное решение $\psi_h$", outdir / "psi_h.png")
-    _save_scalar_field_plot(mesh, psi_exact, r"Точное решение $\psi_{\mathrm{exact}}$", outdir / "psi_exact.png")
+    _save_scalar_field_plot(
+        mesh, psi_h, r"Численное решение $\psi_h$", outdir / "psi_h.png"
+    )
+    _save_scalar_field_plot(
+        mesh,
+        psi_exact,
+        r"Точное решение $\psi_{\mathrm{exact}}$",
+        outdir / "psi_exact.png",
+    )
     _save_error_plot(mesh, psi_h, psi_exact, outdir / "psi_error.png")
 
     df_tau = extract_tangential_velocity_on_sphere(

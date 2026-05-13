@@ -4,7 +4,7 @@ import subprocess
 import json
 from pathlib import Path
 
-from geo_builder import generate_geo
+from lab_2.solver.geo_builder import generate_geo
 
 
 A = 1.0

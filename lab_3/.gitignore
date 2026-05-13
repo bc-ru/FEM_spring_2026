@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.msh
+*.xdmf
+*.h5
+results/**
+!results/.gitkeep
+meshes/**
+!meshes/.gitkeep
