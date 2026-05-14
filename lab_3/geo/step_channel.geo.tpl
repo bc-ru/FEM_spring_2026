@@ -9,8 +9,6 @@ h = {h};      // step depth below y=0
 lc = {lc};    // characteristic mesh size
 lc_step = {lc_step};
 
-// Domain polygon:
-// (-l,0) -> (0,0) -> (0,-h) -> (L,-h) -> (L,H) -> (-l,H)
 Point(1) = {{-l, 0, 0, lc}};
 Point(2) = {{ 0, 0, 0, lc_step}};
 Point(3) = {{ 0,-h, 0, lc_step}};

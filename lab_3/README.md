@@ -21,10 +21,12 @@
 На каждой итерации решается линейная задача Пуассона:
 
 ```math
--\Delta \psi^{k+1} = \omega^k I(\psi^k < 0),
+-\Delta \psi^{k+1} = \lambda^k F(\psi^k),
 \qquad
-\omega^k = \frac{\Gamma}{\int_\Omega I(\psi^k<0)\,dx}.
+\lambda^k = \frac{\Gamma}{\int_\Omega F(\psi^k)\,dx}.
 ```
+
+Базовая модель: `F(ψ)=I(ψ<0)`. Исследовательская модель: `F(ψ)=(-ψ)^q I(ψ<0)`.
 
 Скорость восстанавливается как
 
@@ -81,7 +83,9 @@ python3 solver/run_case.py \
   --L 4 --H 1 --l 1 --h 1 \
   --Gamma -2 \
   --degree 1 \
-  --alpha 0.5
+  --alpha 0.5 \
+  --omega-model constant \
+  --omega-power 0
 ```
 
 Результаты появятся в:
@@ -122,6 +126,12 @@ python3 experiments/run_gamma_sweep.py
 
 ```bash
 python3 experiments/run_height_sweep.py
+```
+
+### Исследовательский трек: зависимость `ω(ψ)`
+
+```bash
+python3 experiments/run_omega_model_sweep.py
 ```
 
 ## 6. Streamlit

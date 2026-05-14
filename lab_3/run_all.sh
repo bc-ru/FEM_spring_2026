@@ -26,3 +26,5 @@ python3 experiments/run_poly_degree.py
 python3 experiments/run_gamma_sweep.py
 
 python3 experiments/run_height_sweep.py
+
+python3 experiments/run_omega_model_sweep.py

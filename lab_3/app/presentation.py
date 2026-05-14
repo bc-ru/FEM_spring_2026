@@ -339,6 +339,40 @@ def read_case_metrics(result_dir: Path) -> pd.DataFrame:
         return pd.DataFrame()
 
 
+def load_ns_reference() -> pd.DataFrame:
+    candidates = [
+        ROOT / "data" / "ns_reference.csv",
+        RESULTS / "ns_reference.csv",
+        RESULTS / "navier_stokes_reference.csv",
+    ]
+    frames: list[pd.DataFrame] = []
+    for path in candidates:
+        if path.exists():
+            try:
+                df = pd.read_csv(path)
+            except Exception:
+                continue
+            df.insert(0, "source_file", str(path.relative_to(ROOT)))
+            frames.append(df)
+    if not frames:
+        return pd.DataFrame()
+    out = pd.concat(frames, ignore_index=True)
+    for col in [
+        "Re",
+        "vortex_area",
+        "vortex_centroid_x",
+        "vortex_centroid_y",
+        "vortex_bbox_xmin",
+        "vortex_bbox_xmax",
+        "vortex_bbox_ymin",
+        "vortex_bbox_ymax",
+        "psi_min",
+    ]:
+        if col in out.columns:
+            out[col] = pd.to_numeric(out[col], errors="coerce")
+    return out
+
+
 def render_interactive_outputs(
     mesh_prefix: Path, msh_path: Path, result_dir: Path
 ) -> None:
@@ -413,7 +447,7 @@ with st.sidebar:
             "11. Влияние h",
             "12. Решение",
             "13. Интерактивный расчёт",
-            "14. Файлы",
+            "14. Исследовательский трек",
         ],
     )
 
@@ -459,16 +493,16 @@ elif page == "2. Геометрия и сетки":
         fig = draw_geometry()
         if fig is not None:
             st.pyplot(fig, clear_figure=True)
+    # c1.image("app/123.png")
+
     with c2:
-        st.markdown(
-            r"""
-            В реализации используется полигональная область
-            $$
-            (-l,0)\to(0,0)\to(0,-h)\to(L,-h)\to(L,H)\to(-l,H).
-            $$
-            Граничные участки помечены физическими группами Gmsh.
-            """
-        )
+        st.markdown(r"""
+        + $ H, L - $ ширина канала, расчетная длина канала
+        + $(l, h) - $ параметры уступа
+        + $$ \Gamma_1, \Gamma_2 - $$ твердые стенки канала
+        + $ \Gamma_3, \Gamma_4 - $ граница входа и выхода жидкости
+
+        """)
         st.dataframe(
             pd.DataFrame([
                 {
@@ -520,6 +554,50 @@ elif page == "2. Геометрия и сетки":
         fig = plot_msh(selected)
         if fig is not None:
             st.pyplot(fig, clear_figure=True)
+
+    st.code(
+        r"""
+// Parameters are substituted by geo/generate_geo.py
+
+L = {L};      // downstream channel length
+H = {H};      // upper channel height above y=0
+l = {l};      // upstream inlet length
+h = {h};      // step depth below y=0
+lc = {lc};    // characteristic mesh size
+lc_step = {lc_step};
+
+Point(1) = {{-l, 0, 0, lc}};
+Point(2) = {{ 0, 0, 0, lc_step}};
+Point(3) = {{ 0,-h, 0, lc_step}};
+Point(4) = {{ L,-h, 0, lc}};
+Point(5) = {{ L, H, 0, lc}};
+Point(6) = {{-l, H, 0, lc}};
+
+Line(1) = {{1, 2}}; // lower upstream wall
+Line(2) = {{2, 3}}; // vertical step wall
+Line(3) = {{3, 4}}; // lower downstream wall
+Line(4) = {{4, 5}}; // outlet
+Line(5) = {{5, 6}}; // upper wall
+Line(6) = {{6, 1}}; // inlet
+
+Curve Loop(1) = {{1, 2, 3, 4, 5, 6}};
+Plane Surface(1) = {{1}};
+
+// Physical IDs used by FEniCS code.
+// Keep these IDs synchronized with solver/problem.py.
+Physical Surface("domain", 1) = {{1}};
+Physical Curve("wall_lower", 11) = {{1, 2, 3}};
+Physical Curve("wall_top",   12) = {{5}};
+Physical Curve("inlet",      13) = {{6}};
+Physical Curve("outlet",     14) = {{4}};
+Physical Curve("step",       15) = {{2}};
+
+Mesh.CharacteristicLengthMin = lc_step;
+Mesh.CharacteristicLengthMax = lc;
+Mesh.Algorithm = 6;
+        
+"""
+    )
 
 elif page == "3. Математическая модель":
     st.title("Математическая модель")
@@ -1245,3 +1323,89 @@ results: {result_dir.relative_to(ROOT)}""",
             st.code(geo_path.read_text(encoding="utf-8"), language="geo")
 
     render_interactive_outputs(mesh_prefix, msh_path, result_dir)
+
+
+elif page == "14. Исследовательский трек":
+    st.title("Исследовательский трек: зависимость ω(ψ)")
+
+    st.markdown(
+        r"""
+        В базовой модели завихренность постоянна в области $\psi<0$:
+        $$
+        \omega(\psi)=\lambda I_{\{\psi<0\}}.
+        $$
+
+        Рассмотрено расширение:
+        $$
+        \omega(\psi)=\lambda(-\psi)^q I_{\{\psi<0\}},
+        \qquad q=0,1,2.
+        $$
+
+        Коэффициент $\lambda$ определяется из условия заданной циркуляции:
+        $$
+        \int_\Omega \omega(\psi)\,dx=\Gamma,
+        \qquad
+        \lambda=
+        \frac{\Gamma}
+        {\int_\Omega (-\psi)^q I_{\{\psi<0\}}\,dx}.
+        $$
+
+        При $q=0$ получается базовая модель постоянной завихренности.
+        """
+    )
+
+    st.markdown(
+        r"""
+| Параметр | Модель | Смысл |
+|:---:|---|---|
+| $q=0$ | $\omega=\lambda I_{\{\psi<0\}}$ | постоянная завихренность |
+| $q=1$ | $\omega=\lambda(-\psi)I_{\{\psi<0\}}$ | завихренность усиливается в глубине вихревой зоны |
+| $q=2$ | $\omega=\lambda(-\psi)^2I_{\{\psi<0\}}$ | более локализованная завихренность |
+"""
+    )
+
+    if all_metrics.empty:
+        st.warning("Файлы results/**/metrics.csv не найдены.")
+    else:
+        df = all_metrics[case_mask(all_metrics, ["omega_model_sweep"])].copy()
+        if df.empty:
+            st.warning("Не найдены результаты серии omega_model_sweep.")
+        else:
+            df = df.sort_values("omega_power")
+            st.dataframe(
+                short_table(
+                    df,
+                    [
+                        "case",
+                        "omega_model",
+                        "omega_power",
+                        "num_cells",
+                        "dofs",
+                        "iterations",
+                        "omega_scale",
+                        "omega_mean",
+                        "omega_min",
+                        "omega_max",
+                        "vortex_area",
+                        "vortex_centroid_x",
+                        "vortex_centroid_y",
+                        "psi_min",
+                        "circulation_error_abs",
+                    ],
+                ),
+                hide_index=True,
+                use_container_width=True,
+                height=220,
+            )
+
+            c1, c2 = st.columns(2)
+            with c1:
+                show_numeric_line(df, "omega_power", "vortex_area")
+            with c2:
+                show_numeric_line(df, "omega_power", "psi_min")
+
+            cases = sorted(df["case"].astype(str).unique())
+            case = st.selectbox("Расчёт", cases)
+            imgs = image_files_for_case(case)
+            if imgs:
+                show_images_grid(imgs, columns=2)

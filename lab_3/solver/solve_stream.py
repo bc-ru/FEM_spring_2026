@@ -94,6 +94,61 @@ def build_indicator(psi: Function, Q: FunctionSpace) -> Function:
     return indicator
 
 
+def build_omega_weight(psi: Function, Q: FunctionSpace, params: CaseParameters) -> Function:
+    """Build DG0 weight F(psi) for omega(psi)=lambda*F(psi).
+
+    constant: F = I(psi < 0)
+    power:    F = (-psi)^q I(psi < 0), q=params.omega_power
+    """
+    model = params.omega_model.lower()
+    q = float(params.omega_power)
+    if model == "constant":
+        q = 0.0
+    elif model != "power":
+        raise ValueError(f"Unknown omega_model={params.omega_model!r}; use constant or power")
+    if q < 0.0:
+        raise ValueError("omega_power must be non-negative")
+
+    mesh = Q.mesh()
+    weight = Function(Q, name="omega_weight")
+    values = weight.vector().get_local()
+    dofmap = Q.dofmap()
+    for cell in cells(mesh):
+        dof = dofmap.cell_dofs(cell.index())[0]
+        val = float(psi(cell.midpoint()))
+        if val < 0.0:
+            values[dof] = 1.0 if q == 0.0 else (-val) ** q
+        else:
+            values[dof] = 0.0
+    weight.vector().set_local(values)
+    weight.vector().apply("insert")
+    return weight
+
+
+def vortex_bbox(psi: Function, mesh: Mesh) -> Dict[str, float]:
+    xs = []
+    ys = []
+    for cell in cells(mesh):
+        mp = cell.midpoint()
+        if psi(mp) < 0.0:
+            xs.append(mp.x())
+            ys.append(mp.y())
+    if not xs:
+        nan = float("nan")
+        return {
+            "vortex_bbox_xmin": nan,
+            "vortex_bbox_xmax": nan,
+            "vortex_bbox_ymin": nan,
+            "vortex_bbox_ymax": nan,
+        }
+    return {
+        "vortex_bbox_xmin": float(min(xs)),
+        "vortex_bbox_xmax": float(max(xs)),
+        "vortex_bbox_ymin": float(min(ys)),
+        "vortex_bbox_ymax": float(max(ys)),
+    }
+
+
 def l2_norm(u: Function) -> float:
     return math.sqrt(max(0.0, assemble(u * u * dx)))
 
@@ -245,15 +300,21 @@ def solve_case(mesh_prefix: str | Path, params: CaseParameters, output_dir: str 
     for k in range(1, params.max_iter + 1):
         iterations = k
         indicator = build_indicator(psi_old, Q)
+        omega_weight = build_omega_weight(psi_old, Q, params)
         vortex_area = float(assemble(indicator * dx))
+        omega_denom = float(assemble(omega_weight * dx))
 
         if vortex_area <= DOLFIN_EPS_AREA:
             raise RuntimeError(
                 "Vortex area is zero. Increase --initial-eps or --initial-vortex-x."
             )
+        if abs(omega_denom) <= DOLFIN_EPS_AREA:
+            raise RuntimeError(
+                "Omega normalization denominator is zero. Change omega_model/initial guess."
+            )
 
-        omega = float(params.Gamma / vortex_area)
-        rhs = omega * indicator * v * dx
+        omega = float(params.Gamma / omega_denom)
+        rhs = omega * omega_weight * v * dx
 
         psi_new = Function(V, name="psi_new")
         solve(a == rhs, psi_new, bcs)
@@ -286,9 +347,11 @@ def solve_case(mesh_prefix: str | Path, params: CaseParameters, output_dir: str 
     psi = Function(V, name="psi")
     psi.assign(psi_old)
     indicator = build_indicator(psi, Q)
+    omega_weight = build_omega_weight(psi, Q, params)
     vortex_area = float(assemble(indicator * dx))
-    omega = float(params.Gamma / vortex_area) if vortex_area > DOLFIN_EPS_AREA else float("nan")
-    omega_field = project(Constant(omega) * indicator, Q)
+    omega_denom = float(assemble(omega_weight * dx))
+    omega = float(params.Gamma / omega_denom) if abs(omega_denom) > DOLFIN_EPS_AREA else float("nan")
+    omega_field = project(Constant(omega) * omega_weight, Q)
     omega_field.rename("omega", "omega")
 
     W = VectorFunctionSpace(mesh, "CG", max(1, params.degree - 1))
@@ -306,6 +369,19 @@ def solve_case(mesh_prefix: str | Path, params: CaseParameters, output_dir: str 
     export_preview_figures(output_dir, mesh, psi, indicator, omega_field, velocity)
 
     psi_values = psi.vector().get_local()
+    omega_values = omega_field.vector().get_local()
+    circulation_check = float(assemble(omega_field * dx))
+    x = SpatialCoordinate(mesh)
+    if vortex_area > DOLFIN_EPS_AREA:
+        vortex_centroid_x = float(assemble(x[0] * indicator * dx) / vortex_area)
+        vortex_centroid_y = float(assemble(x[1] * indicator * dx) / vortex_area)
+        omega_mean = circulation_check / vortex_area
+    else:
+        vortex_centroid_x = float("nan")
+        vortex_centroid_y = float("nan")
+        omega_mean = float("nan")
+    bbox = vortex_bbox(psi, mesh)
+
     metrics: Dict[str, object] = {
         "L": params.L,
         "H": params.H,
@@ -314,15 +390,25 @@ def solve_case(mesh_prefix: str | Path, params: CaseParameters, output_dir: str 
         "Gamma": params.Gamma,
         "degree": params.degree,
         "alpha": params.alpha,
+        "omega_model": params.omega_model,
+        "omega_power": params.omega_power,
+        "omega_scale": omega,
+        "omega": omega,
+        "omega_mean": omega_mean,
+        "omega_min": float(omega_values.min()),
+        "omega_max": float(omega_values.max()),
+        "omega_normalization_denom": omega_denom,
         "num_cells": mesh.num_cells(),
         "num_vertices": mesh.num_vertices(),
         "dofs": V.dim(),
         "converged": int(converged),
         "iterations": iterations,
-        "omega": omega,
         "vortex_area": vortex_area,
-        "circulation_check": omega * vortex_area,
-        "circulation_error_abs": abs(omega * vortex_area - params.Gamma),
+        "vortex_centroid_x": vortex_centroid_x,
+        "vortex_centroid_y": vortex_centroid_y,
+        **bbox,
+        "circulation_check": circulation_check,
+        "circulation_error_abs": abs(circulation_check - params.Gamma),
         "psi_min": float(psi_values.min()),
         "psi_max": float(psi_values.max()),
         "err_psi_last": err_psi,

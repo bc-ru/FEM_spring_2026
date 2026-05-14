@@ -29,6 +29,8 @@ def main() -> None:
     parser.add_argument("--max-iter", type=int, default=200)
     parser.add_argument("--initial-eps", type=float, default=0.05)
     parser.add_argument("--initial-vortex-x", type=float, default=2.0)
+    parser.add_argument("--omega-model", choices=["constant", "power"], default="constant")
+    parser.add_argument("--omega-power", type=float, default=0.0)
     args = parser.parse_args()
 
     params = CaseParameters(
@@ -44,6 +46,8 @@ def main() -> None:
         max_iter=args.max_iter,
         initial_eps=args.initial_eps,
         initial_vortex_x=args.initial_vortex_x,
+        omega_model=args.omega_model,
+        omega_power=args.omega_power,
     )
     metrics = solve_case(Path(args.mesh_prefix), params, Path(args.out))
     for key, value in metrics.items():

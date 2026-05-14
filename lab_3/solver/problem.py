@@ -26,3 +26,5 @@ class CaseParameters:
     inlet_scale: float = 1.0
     initial_eps: float = 0.05
     initial_vortex_x: float = 2.0
+    omega_model: str = "constant"
+    omega_power: float = 0.0
